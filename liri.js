@@ -14,7 +14,7 @@ var client = new Twitter({
 });
  
 var params = {screen_name: "ParkJustin"};
-	client.get('statuses/user_timeline', params, function(error, tweets, response) {
+     client.get('statuses/user_timeline', params, function(error, tweets, response) {
 	 if (error) {
 		console.log(error)
 	  };
@@ -24,17 +24,15 @@ var params = {screen_name: "ParkJustin"};
 	  		var twits = "\n============== " + tweets[i].created_at + " ==============\n" +  "\n" + tweets[i].text + "\n" + "\n============================================================\n"
 			   console.log(twits)
 
-			  fs.appendFile("log.txt", twits, function(error){
-			  	  	if (error) {
-					   console.log(error)
-			  		};
-
-			  });
-	    
+			fs.appendFile("log.txt", twits, function(error){
+			  if (error) {
+			   console.log(error)
+			  };
+			});    
 	  	};
 	 };
 
-	});
+     });
 
 };
 
@@ -45,10 +43,10 @@ function spotifySong(action) {
 	}
 
 spotify.search({type: 'track', query: action}, function(error, data) {
-    if (error) {
-        console.log('Error occurred: ' + error);
-        return;
-    }
+	if (error) {
+		console.log('Error occurred: ' + error);
+		return;
+	}
  	
  	var songInfo = "\n============================================================\n"
  		+ "\nSong: "+ data.tracks.items[0].name + "\n"
@@ -139,11 +137,11 @@ switch (command) {
 	break;
 
 	case "movie-this":
-    searchMovie();
-    break;
+    	searchMovie();
+    	break;
 
-    case "do-what-it-says":
-    doWhat();
-    break;
+	case "do-what-it-says":
+	doWhat();
+	break;
 } 
 
