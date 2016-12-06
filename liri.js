@@ -14,29 +14,27 @@ var client = new Twitter({
 });
  
 var params = {screen_name: "ParkJustin"};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  if (!error) {
-  	for (var i = 0; i < tweets.length; i++) {
-  		var twits = "\n============== " + tweets[i].created_at + " ==============\n" +  "\n" + tweets[i].text + "\n" + "\n============================================================\n"
-		   console.log(twits)
+	client.get('statuses/user_timeline', params, function(error, tweets, response) {
+	 if (error) {
+		console.log(error)
+	  };
 
+	 if (!error) {
+	  	for (var i = 0; i < tweets.length; i++) {
+	  		var twits = "\n============== " + tweets[i].created_at + " ==============\n" +  "\n" + tweets[i].text + "\n" + "\n============================================================\n"
+			   console.log(twits)
 
-		fs.appendFile("log.txt", twits, function(error){
-  	  	if (error) {
-		   console.log(error)
-  		};
+			  fs.appendFile("log.txt", twits, function(error){
+			  	  	if (error) {
+					   console.log(error)
+			  		};
 
-  	});
-    
-  };
-};
+			  });
+	    
+	  	};
+	 };
 
-  if (error) {
-	console.log(error)
-  }
-
-
-});
+	});
 
 };
 
