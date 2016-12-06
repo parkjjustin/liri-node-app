@@ -50,20 +50,19 @@ spotify.search({type: 'track', query: action}, function(error, data) {
  	
  	var songInfo = "\n============================================================\n"
  		+ "\nSong: "+ data.tracks.items[0].name + "\n"
- 	    + "\n============================================================\n"
-    	+ "\nArtist: " + data.tracks.items[0].artists[0].name + "\n"
-    	+ "\n============================================================\n"
-    	+ "\nPreview URL: " + data.tracks.items[0].preview_url + "\n"
-    	+ "\n============================================================\n"
-    	+ "\nAlbum: " + data.tracks.items[0].album.name + "\n"
-    	+ "\n============================================================\n"
-    	console.log(songInfo);
-    	fs.appendFile("log.txt", songInfo, function(error){
+ 	        + "\n============================================================\n"
+    	        + "\nArtist: " + data.tracks.items[0].artists[0].name + "\n"
+    	        + "\n============================================================\n"
+    	        + "\nPreview URL: " + data.tracks.items[0].preview_url + "\n"
+    	        + "\n============================================================\n"
+    	        + "\nAlbum: " + data.tracks.items[0].album.name + "\n"
+    	        + "\n============================================================\n"
+    	       console.log(songInfo);
+    	     fs.appendFile("log.txt", songInfo, function(error){
   	  	if (error) {
 		   console.log(error)
   		};
-
-  	});
+  	     });
 });
 
 }
